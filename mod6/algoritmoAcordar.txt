@@ -1,0 +1,24 @@
+Acordar
+
+1. O alarme toca;
+   1.1 enquanto o alarme não for desligado
+      (deixar o alarme tocar,
+       adiar alarme);
+   1.2 desligar alarme;
+2. levantar da cama;
+3. colocar sandalia/pantufa;
+4. escolha caminhar para:
+   4.1 banheiro
+       (escovar dentes,
+        lavar rosto);
+        sair do banheiro; //retorna ao método 4 caminhar para
+   4.2 cozinha
+       (preparar café da manhã,
+        tomar café da manhã);
+        sair da cozinha; //retorna ao método 4 caminhar para
+   4.3 sala
+       (ligar tv,
+        sentar no sofá,
+        deitar no sofá):
+        sair da sala; //retorna ao método 4 caminhar para
+5. preparar para ir ao trabalho;
