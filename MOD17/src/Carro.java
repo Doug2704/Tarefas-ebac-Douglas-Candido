@@ -1,20 +1,31 @@
-public class Carro<T> {
-    private T marca;
+abstract class Carro<T> {
+	private T marca;
+	protected T modelo;
 
-    public Carro(T marca) {
-        this.marca = marca;
-    }
+	public Carro(T marca, T modelo) {
+		super();
+		this.marca = marca;
+		this.modelo = modelo;
+	}
 
-    public T getMarca() {
-        return marca;
-    }
+	public T getMarca() {
+		return marca;
+	}
 
-    public void setMarca(T marca) {
-        this.marca = marca;
-    }
+	public void setMarca(T marca) {
+		this.marca = marca;
+	}
 
-    @Override
-    public String toString() {
-        return "Carro da marca: " + marca;
-    }
+	public T getModelo() {
+		return modelo;
+	}
+
+	public void setModelo(T modelo) {
+		this.modelo = modelo;
+	}
+
+	@Override
+	public String toString() {
+		return "" + modelo;
+	}
 }
