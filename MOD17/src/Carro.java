@@ -26,6 +26,7 @@ abstract class Carro<T> {
 
 	@Override
 	public String toString() {
-		return "" + modelo;
+		return marca + " | " + modelo;
 	}
+
 }
