@@ -1,5 +1,6 @@
+package main;
 
-class Pessoa {
+public class Pessoa {
 	String nome;
 	String sexo;
 

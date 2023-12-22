@@ -1,20 +1,19 @@
-package main;
+package test;
+
+import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
-/***
- * ler do console nome e sexo separados por vírgula, criar a partir dessa lista
- * outra lista usando expressões lambda e separar as mulheres utilizar lambda,
- * if else tarefa_streams
- * 
- * @author Douglas
- *
- */
-public class Program {
+import org.junit.Test;
 
-	public static void main(String[] args) {
+import main.Pessoa;
 
+public class ProgramTest {
+
+	@Test
+	public void testEquals() {
 		List<Pessoa> pessoas = new ArrayList<>();
 
 		String[] s = { "Maria,Feminino", "Pedro,Masculino", "Augusto,Masculino", "Joana,Feminino", "Carol,Feminino",
@@ -28,14 +27,13 @@ public class Program {
 				pessoas.add(new Pessoa(nome, sexo));
 			}
 		}
+		List<Pessoa> mulheres = pessoas.stream().filter(pessoa -> pessoa.getSexo().equals("Feminino"))
+				.collect(Collectors.toList());
 
-		System.out.println("Mulheres no grupo:\n");
+		for (Pessoa mulher : mulheres) {
 
-		pessoas.stream().forEach(pessoa -> {
-			if (pessoa.getSexo().equals("Feminino")) {
-				System.out.println(pessoa.getNome());
-			}
-		});
+			assertEquals("Feminino", mulher.getSexo());
 
+		}
 	}
 }
