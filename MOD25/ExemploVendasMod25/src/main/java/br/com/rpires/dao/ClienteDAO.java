@@ -14,14 +14,14 @@ public class ClienteDAO extends GenericDAO<Cliente, Long> implements IClienteDAO
 
 	public ClienteDAO() {
 		super();
-	}
+	} 
 
 	@Override
 	public Class<Cliente> getTipoClasse() {
 		return Cliente.class;
 	}
 
-	@Override
+	//@Override
 	public void atualizarDados(Cliente entity, Cliente entityCadastrado) {
 		entityCadastrado.setCidade(entity.getCidade());
 		entityCadastrado.setCpf(entity.getCpf());
@@ -29,7 +29,7 @@ public class ClienteDAO extends GenericDAO<Cliente, Long> implements IClienteDAO
 		entityCadastrado.setEstado(entity.getEstado());
 		entityCadastrado.setNome(entity.getNome()); 
 		entityCadastrado.setNumero(entity.getNumero());
-		entityCadastrado.setTel(entity.getTel());
+		entityCadastrado.setTel(entity.getTel()); 
 		
 	}
 

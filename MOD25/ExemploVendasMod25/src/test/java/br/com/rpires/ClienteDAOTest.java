@@ -48,7 +48,8 @@ public class ClienteDAOTest {
 	public void pesquisarCliente() {
 		Cliente clienteConsultado = clienteDao.consultar(cliente.getCpf());
 		Assert.assertNotNull(clienteConsultado);
-		System.out.println(clienteConsultado.getNome());
+		System.out.println("pesquisarCliente");
+		System.out.println(cliente);
 	}
 
 	@Test
@@ -56,15 +57,17 @@ public class ClienteDAOTest {
 		cliente.setCpf(56565656565L);
 		Boolean retorno = clienteDao.cadastrar(cliente);
 		Assert.assertTrue(retorno);
-
+		System.out.println("salvarCliente"); 
+		System.out.println(cliente);
 	}
 
-//alterado. Passou!
 	@Test
 	public void excluirCliente() {
 		Assert.assertEquals("Rodrigo", cliente.getNome()); // verifica se é o mesmo nome antes de excluir
 		cliente = null;
 		Assert.assertEquals(null, cliente);
+		System.out.println("excluirCliente");
+		System.out.println(cliente); // deve retornar nulo
 	}
 
 	@Test
@@ -72,6 +75,7 @@ public class ClienteDAOTest {
 		cliente.setNome("Rodrigo Pires");
 		clienteDao.alterar(cliente);
 		Assert.assertEquals("Rodrigo Pires", cliente.getNome());
+		System.out.println("alterarCliente");
 	}
 
 	@Test
@@ -79,6 +83,8 @@ public class ClienteDAOTest {
 		Collection<Cliente> list = clienteDao.buscarTodos();
 		assertTrue(list != null);
 		assertTrue(list.size() == 2);
-	
+		System.out.println("buscarTodos");
+		System.out.println(list);
+
 	}
 }

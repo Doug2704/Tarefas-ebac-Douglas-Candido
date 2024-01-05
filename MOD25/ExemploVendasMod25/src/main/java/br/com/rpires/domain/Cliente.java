@@ -64,10 +64,15 @@ public class Cliente implements Persistente {
 		this.cidade = cidade;
 	}
 	public String getEstado() {
-		return estado;
+		return estado; 
 	}
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+	@Override
+	public String toString() {
+		return "Cliente [nome=" + nome + ", cpf=" + cpf + ", tel=" + tel + ", end=" + end + ", numero=" + numero
+				+ ", cidade=" + cidade + ", estado=" + estado + "]";
 	}
 
 	
