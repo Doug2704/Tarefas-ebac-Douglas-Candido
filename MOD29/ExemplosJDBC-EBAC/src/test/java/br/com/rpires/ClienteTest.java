@@ -10,7 +10,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import main.java.br.com.rpires.dao.generic.jdbc.dao.ClienteDAO;
@@ -25,29 +24,19 @@ public class ClienteTest {
 
 	private IClienteDAO clienteDAO;
 
-	@Before
-	public void init() throws Exception {
-
-	}
-
 	@Test
 	public void cadastrarTest() throws Exception {
 		clienteDAO = new ClienteDAO();
-
 		Cliente cliente = new Cliente();
+
+		cliente.setCodigo("10");
 		cliente.setNome("Rodrigo Pires");
-		cliente.setCpf(101l);
-		cliente.setTelefone(83l);
-		cliente.setEndereco("rua");
-		cliente.setNumero(5l);
-		cliente.setCidade("cruz");
-		cliente.setEstado("pb");
 		Integer countCad = clienteDAO.cadastrar(cliente);
 		assertTrue(countCad == 1);
 
-		Cliente clienteBD = clienteDAO.buscar(1);
+		Cliente clienteBD = clienteDAO.buscar("10");
 		assertNotNull(clienteBD);
-
+		assertEquals(cliente.getCodigo(), clienteBD.getCodigo());
 		assertEquals(cliente.getNome(), clienteBD.getNome());
 
 		Integer countDel = clienteDAO.excluir(clienteBD);
@@ -58,17 +47,15 @@ public class ClienteTest {
 	public void buscarTest() throws Exception {
 		clienteDAO = new ClienteDAO();
 
-		Cliente cliente = clienteDAO.buscar(1);
-		assertNotNull(cliente);
-		
-		/*
-		 * cliente.setNome("Rodrigo"); Integer countCad = clienteDAO.cadastrar(cliente);
-		 * assertTrue(countCad == 1);
-		 */
+		Cliente cliente = new Cliente();
+		cliente.setCodigo("10");
+		cliente.setNome("Rodrigo Pires");
+		Integer countCad = clienteDAO.cadastrar(cliente);
+		assertTrue(countCad == 1);
 
-		Cliente clienteBD = clienteDAO.buscar(1);
+		Cliente clienteBD = clienteDAO.buscar("10");
 		assertNotNull(clienteBD);
-
+		assertEquals(cliente.getCodigo(), clienteBD.getCodigo());
 		assertEquals(cliente.getNome(), clienteBD.getNome());
 
 		Integer countDel = clienteDAO.excluir(clienteBD);
@@ -80,14 +67,14 @@ public class ClienteTest {
 		clienteDAO = new ClienteDAO();
 
 		Cliente cliente = new Cliente();
-
+		cliente.setCodigo("10");
 		cliente.setNome("Rodrigo Pires");
 		Integer countCad = clienteDAO.cadastrar(cliente);
 		assertTrue(countCad == 1);
 
-		Cliente clienteBD = clienteDAO.buscar(1);
+		Cliente clienteBD = clienteDAO.buscar("10");
 		assertNotNull(clienteBD);
-
+		assertEquals(cliente.getCodigo(), clienteBD.getCodigo());
 		assertEquals(cliente.getNome(), clienteBD.getNome());
 
 		Integer countDel = clienteDAO.excluir(clienteBD);
@@ -99,13 +86,13 @@ public class ClienteTest {
 		clienteDAO = new ClienteDAO();
 
 		Cliente cliente = new Cliente();
-
+		cliente.setCodigo("10");
 		cliente.setNome("Rodrigo Pires");
 		Integer countCad = clienteDAO.cadastrar(cliente);
 		assertTrue(countCad == 1);
 
 		Cliente clientes = new Cliente();
-
+		clientes.setCodigo("20");
 		clientes.setNome("Teste");
 		Integer countCad2 = clienteDAO.cadastrar(clientes);
 		assertTrue(countCad2 == 1);
@@ -131,27 +118,28 @@ public class ClienteTest {
 		clienteDAO = new ClienteDAO();
 
 		Cliente cliente = new Cliente();
-
+		cliente.setCodigo("10");
 		cliente.setNome("Rodrigo Pires");
 		Integer countCad = clienteDAO.cadastrar(cliente);
 		assertTrue(countCad == 1);
 
-		Cliente clienteBD = clienteDAO.buscar(1);
+		Cliente clienteBD = clienteDAO.buscar("10");
 		assertNotNull(clienteBD);
-
+		assertEquals(cliente.getCodigo(), clienteBD.getCodigo());
 		assertEquals(cliente.getNome(), clienteBD.getNome());
 
+		clienteBD.setCodigo("20");
 		clienteBD.setNome("Outro nome");
 		Integer countUpdate = clienteDAO.atualizar(clienteBD);
 		assertTrue(countUpdate == 1);
 
-		Cliente clienteBD1 = clienteDAO.buscar(1);
+		Cliente clienteBD1 = clienteDAO.buscar("10");
 		assertNull(clienteBD1);
 
-		Cliente clienteBD2 = clienteDAO.buscar(1);
+		Cliente clienteBD2 = clienteDAO.buscar("20");
 		assertNotNull(clienteBD2);
 		assertEquals(clienteBD.getId(), clienteBD2.getId());
-
+		assertEquals(clienteBD.getCodigo(), clienteBD2.getCodigo());
 		assertEquals(clienteBD.getNome(), clienteBD2.getNome());
 
 		List<Cliente> list = clienteDAO.buscarTodos();
