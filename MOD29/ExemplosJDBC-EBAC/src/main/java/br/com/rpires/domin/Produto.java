@@ -1,12 +1,10 @@
 package main.java.br.com.rpires.domin;
 
-public class Cliente {
-
+public class Produto {
 	private Long id;
-	
 	private String codigo;
-	
 	private String nome;
+	private Double preco;
 
 	public Long getId() {
 		return id;
@@ -31,6 +29,12 @@ public class Cliente {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
-	
+
+	public Double getPreco() {
+		return preco;
+	}
+
+	public void setPreco(Double preco) {
+		this.preco = preco;
+	}
 }

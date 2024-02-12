@@ -2,14 +2,14 @@ package test.java.br.com.rpires;
 
 import java.util.Scanner;
 import main.java.br.com.rpires.dao.generic.jdbc.dao.ClienteDAO;
-import main.java.br.com.rpires.domin.Cliente;
+import main.java.br.com.rpires.domin.ProdutoDAO;
 
 public class TestePrograma {
 	public static void main(String[] args) {
 		ClienteDAO clienteDAO = new ClienteDAO();
 		Scanner scanner = new Scanner(System.in);
 
-		Cliente c = new Cliente();
+		ProdutoDAO c = new ProdutoDAO();
 		c.setCodigo("2");
 		c.setNome("d");
 		
@@ -24,9 +24,9 @@ public class TestePrograma {
 			System.out.println("Digite o código do cliente:");
 			String codigo = scanner.nextLine();
 
-			Cliente cliente = clienteDAO.buscar(codigo);
+			ProdutoDAO cliente = clienteDAO.buscar(codigo);
 			if (cliente != null) {
-				System.out.println("Nome do cliente encontrado: " + cliente.getId());
+				System.out.println("Nome do cliente encontrado: " + cliente.getNome());
 			} else {
 				System.out.println("Cliente com código '" + codigo + "' não encontrado.");
 			}
