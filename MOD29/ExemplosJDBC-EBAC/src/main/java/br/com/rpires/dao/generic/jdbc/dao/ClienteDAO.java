@@ -32,7 +32,7 @@ public class ClienteDAO implements IClienteDAO {
 		} catch(Exception e) {
 			throw e;
 		} finally {
-		//	closeConnection(connection, stm, null);
+		closeConnection(connection, stm, null);
 		}
 	}
 
@@ -50,7 +50,7 @@ public class ClienteDAO implements IClienteDAO {
 		} catch(Exception e) {
 			throw e;
 		} finally {
-			//closeConnection(connection, stm, null);
+			closeConnection(connection, stm, null);
 		}
 	}
 
@@ -79,7 +79,7 @@ public class ClienteDAO implements IClienteDAO {
 		} catch(Exception e) {
 			throw e;
 		} finally {
-			//closeConnection(connection, stm, rs);
+			closeConnection(connection, stm, rs);
 		}
 		return cliente;
 	}
@@ -97,7 +97,7 @@ public class ClienteDAO implements IClienteDAO {
 		} catch(Exception e) {
 			throw e;
 		} finally {
-			//closeConnection(connection, stm, null);
+			closeConnection(connection, stm, null);
 		}
 	}
 	
@@ -127,7 +127,7 @@ public class ClienteDAO implements IClienteDAO {
 		} catch(Exception e) {
 			throw e;
 		} finally {
-		//	closeConnection(connection, stm, rs);
+			closeConnection(connection, stm, rs);
 		}
 		return list;
 	}
