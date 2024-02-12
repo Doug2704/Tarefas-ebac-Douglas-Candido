@@ -20,7 +20,7 @@ import main.java.br.com.rpires.domin.Cliente;
  * @author rodrigo.pires
  *
  */
-public class ClienteTest {
+public class ClienteTest { 
 
 	private IClienteDAO clienteDAO;
 
@@ -29,11 +29,12 @@ public class ClienteTest {
 		clienteDAO = new ClienteDAO();
 		Cliente cliente = new Cliente();
 
+		//cliente.setId(1l);
 		cliente.setCodigo("10");
 		cliente.setNome("Rodrigo Pires");
+
 		Integer countCad = clienteDAO.cadastrar(cliente);
 		assertTrue(countCad == 1);
-
 		Cliente clienteBD = clienteDAO.buscar("10");
 		assertNotNull(clienteBD);
 		assertEquals(cliente.getCodigo(), clienteBD.getCodigo());

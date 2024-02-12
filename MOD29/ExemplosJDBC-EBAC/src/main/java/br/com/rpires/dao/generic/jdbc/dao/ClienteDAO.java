@@ -32,7 +32,7 @@ public class ClienteDAO implements IClienteDAO {
 		} catch(Exception e) {
 			throw e;
 		} finally {
-			closeConnection(connection, stm, null);
+		//	closeConnection(connection, stm, null);
 		}
 	}
 
@@ -50,7 +50,7 @@ public class ClienteDAO implements IClienteDAO {
 		} catch(Exception e) {
 			throw e;
 		} finally {
-			closeConnection(connection, stm, null);
+			//closeConnection(connection, stm, null);
 		}
 	}
 
@@ -79,7 +79,7 @@ public class ClienteDAO implements IClienteDAO {
 		} catch(Exception e) {
 			throw e;
 		} finally {
-			closeConnection(connection, stm, rs);
+			//closeConnection(connection, stm, rs);
 		}
 		return cliente;
 	}
@@ -97,7 +97,7 @@ public class ClienteDAO implements IClienteDAO {
 		} catch(Exception e) {
 			throw e;
 		} finally {
-			closeConnection(connection, stm, null);
+			//closeConnection(connection, stm, null);
 		}
 	}
 	
@@ -127,7 +127,7 @@ public class ClienteDAO implements IClienteDAO {
 		} catch(Exception e) {
 			throw e;
 		} finally {
-			closeConnection(connection, stm, rs);
+		//	closeConnection(connection, stm, rs);
 		}
 		return list;
 	}
@@ -146,7 +146,7 @@ public class ClienteDAO implements IClienteDAO {
 	
 	private String getSqlUpdate() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("UPDATE TB_CLIENTE_2 ");
+		sb.append("UPDATE TB_CLIENTE ");
 		sb.append("SET NOME = ?, CODIGO = ? ");
 		sb.append("WHERE ID = ?");
 		return sb.toString();
@@ -160,7 +160,7 @@ public class ClienteDAO implements IClienteDAO {
 	
 	private String getSqlDelete() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("DELETE FROM TB_CLIENTE_2 ");
+		sb.append("DELETE FROM TB_CLIENTE ");
 		sb.append("WHERE CODIGO = ?");
 		return sb.toString();
 	}
@@ -183,7 +183,7 @@ public class ClienteDAO implements IClienteDAO {
 	private String getSqlSelectAll() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("SELECT * FROM TB_CLIENTE");
-		return sb.toString();
+		return sb.toString(); 
 	}
 	
 	private void closeConnection(Connection connection, PreparedStatement stm, ResultSet rs) {
@@ -198,7 +198,7 @@ public class ClienteDAO implements IClienteDAO {
 				connection.close();
 			}
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
+			
 			e1.printStackTrace();
 		}
 	}
