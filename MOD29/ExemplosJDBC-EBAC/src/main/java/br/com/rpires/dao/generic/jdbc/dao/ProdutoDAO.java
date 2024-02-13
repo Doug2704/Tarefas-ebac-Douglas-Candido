@@ -9,6 +9,7 @@ import java.util.List;
 
 import main.java.br.com.rpires.dao.generic.jdbc.ConnectionFactory;
 import main.java.br.com.rpires.domin.Produto;
+
 /***
  * 
  * @author Douglas
@@ -19,31 +20,31 @@ public class ProdutoDAO implements IProdutoDAO {
 	@Override
 	public Integer cadastrar(Produto produto) throws Exception {
 		Connection connection = null;
-    	PreparedStatement stm = null;
+		PreparedStatement stm = null;
 		try {
 			connection = ConnectionFactory.getConnection();
 			String sql = getSqlInsert();
 			stm = connection.prepareStatement(sql);
 			adicionarParametrosInsert(stm, produto);
 			return stm.executeUpdate();
-		} catch(Exception e) {
+		} catch (Exception e) {
 			throw e;
 		} finally {
-		closeConnection(connection, stm, null);
+			closeConnection(connection, stm, null);
 		}
 	}
 
 	@Override
 	public Integer atualizar(Produto produto) throws Exception {
 		Connection connection = null;
-    	PreparedStatement stm = null;
+		PreparedStatement stm = null;
 		try {
 			connection = ConnectionFactory.getConnection();
 			String sql = getSqlUpdate();
 			stm = connection.prepareStatement(sql);
 			adicionarParametrosUpdate(stm, produto);
 			return stm.executeUpdate();
-		} catch(Exception e) {
+		} catch (Exception e) {
 			throw e;
 		} finally {
 			closeConnection(connection, stm, null);
@@ -72,6 +73,7 @@ public class ProdutoDAO implements IProdutoDAO {
 				produto.setId(id);
 				produto.setNome(nome);
 				produto.setCodigo(cd);
+				produto.setPreco(preco);
 			}
 		} catch (Exception e) {
 			throw e;
@@ -103,7 +105,7 @@ public class ProdutoDAO implements IProdutoDAO {
 				produto.setId(id);
 				produto.setNome(nome);
 				produto.setCodigo(cd);
-
+				produto.setPreco(preco);
 				list.add(produto);
 			}
 		} catch (Exception e) {
@@ -150,7 +152,7 @@ public class ProdutoDAO implements IProdutoDAO {
 
 	private String getSqlUpdate() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("UPDATE TB_PPRODUTO ");
+		sb.append("UPDATE TB_PRODUTO ");
 		sb.append("SET NOME = ?, CODIGO = ?, PRECO = ? ");
 		sb.append("WHERE ID = ?");
 		return sb.toString();

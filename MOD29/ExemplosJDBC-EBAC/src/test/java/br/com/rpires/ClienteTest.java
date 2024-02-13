@@ -29,7 +29,7 @@ public class ClienteTest {
 		clienteDAO = new ClienteDAO();
 		Cliente cliente = new Cliente();
 
-		//cliente.setId(1l);
+	
 		cliente.setCodigo("10");
 		cliente.setNome("Rodrigo Pires");
 
@@ -79,7 +79,7 @@ public class ClienteTest {
 		assertEquals(cliente.getNome(), clienteBD.getNome());
 
 		Integer countDel = clienteDAO.excluir(clienteBD);
-		assertTrue(countDel == 1);
+		assertTrue(countDel == 1); 
 	}
 
 	@Test
@@ -92,10 +92,10 @@ public class ClienteTest {
 		Integer countCad = clienteDAO.cadastrar(cliente);
 		assertTrue(countCad == 1);
 
-		Cliente clientes = new Cliente();
-		clientes.setCodigo("20");
-		clientes.setNome("Teste");
-		Integer countCad2 = clienteDAO.cadastrar(clientes);
+		Cliente cliente2 = new Cliente();
+		cliente2.setCodigo("20");
+		cliente2.setNome("Teste");
+		Integer countCad2 = clienteDAO.cadastrar(cliente2);
 		assertTrue(countCad2 == 1);
 
 		List<Cliente> list = clienteDAO.buscarTodos();
@@ -124,7 +124,7 @@ public class ClienteTest {
 		Integer countCad = clienteDAO.cadastrar(cliente);
 		assertTrue(countCad == 1);
 
-		Cliente clienteBD = clienteDAO.buscar("10");
+		Cliente clienteBD = clienteDAO.buscar("10"); 
 		assertNotNull(clienteBD);
 		assertEquals(cliente.getCodigo(), clienteBD.getCodigo());
 		assertEquals(cliente.getNome(), clienteBD.getNome());
