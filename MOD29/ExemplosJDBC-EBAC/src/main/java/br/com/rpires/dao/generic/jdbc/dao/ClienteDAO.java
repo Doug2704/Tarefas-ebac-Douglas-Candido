@@ -100,6 +100,22 @@ public class ClienteDAO implements IClienteDAO {
 			closeConnection(connection, stm, null);
 		}
 	}
+
+	@Override
+	public Integer excluirTodos() throws Exception {
+		Connection connection = null;
+		PreparedStatement stm = null;
+		try {
+			connection = ConnectionFactory.getConnection();
+			String sql = getSqlDeleteAll();
+			stm = connection.prepareStatement(sql);
+			return stm.executeUpdate();
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			closeConnection(connection, stm, null);
+		}
+	}
 	
 	@Override
 	public List<Cliente> buscarTodos() throws Exception {
@@ -164,6 +180,11 @@ public class ClienteDAO implements IClienteDAO {
 		sb.append("WHERE CODIGO = ?");
 		return sb.toString();
 	}
+	private String getSqlDeleteAll() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("DELETE FROM TB_Cliente ");
+		return sb.toString();
+	}
 	
 	private void adicionarParametrosDelete(PreparedStatement stm, Cliente cliente) throws SQLException {
 		stm.setString(1, cliente.getCodigo());
@@ -202,6 +223,8 @@ public class ClienteDAO implements IClienteDAO {
 			e1.printStackTrace();
 		}
 	}
+
+
 
 
 }

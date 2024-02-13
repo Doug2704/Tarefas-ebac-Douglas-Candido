@@ -133,6 +133,22 @@ public class ProdutoDAO implements IProdutoDAO {
 		}
 	}
 
+	@Override
+	public Integer excluirTodos() throws Exception {
+		Connection connection = null;
+		PreparedStatement stm = null;
+		try {
+			connection = ConnectionFactory.getConnection();
+			String sql = getSqlDeleteAll();
+			stm = connection.prepareStatement(sql);
+			return stm.executeUpdate();
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			closeConnection(connection, stm, null);
+		}
+	}
+
 	private String getSqlInsert() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("INSERT INTO TB_PRODUTO (CODIGO, NOME, PRECO) ");
@@ -161,14 +177,20 @@ public class ProdutoDAO implements IProdutoDAO {
 	private void adicionarParametrosUpdate(PreparedStatement stm, Produto produto) throws SQLException {
 		stm.setString(1, produto.getNome());
 		stm.setString(2, produto.getCodigo());
-		stm.setLong(3, produto.getId());
-		stm.setDouble(4, produto.getPreco());
+		stm.setDouble(3, produto.getPreco());
+		stm.setLong(4, produto.getId());
 	}
 
 	private String getSqlDelete() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("DELETE FROM TB_PRODUTO ");
 		sb.append("WHERE CODIGO = ?");
+		return sb.toString();
+	}
+
+	private String getSqlDeleteAll() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("DELETE FROM TB_PRODUTO ");
 		return sb.toString();
 	}
 
@@ -205,4 +227,5 @@ public class ProdutoDAO implements IProdutoDAO {
 			e1.printStackTrace();
 		}
 	}
+
 }

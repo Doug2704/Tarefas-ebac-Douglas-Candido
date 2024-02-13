@@ -20,4 +20,7 @@ public interface IProdutoDAO {
 	public List<Produto> buscarTodos() throws Exception;
 
 	public Integer excluir(Produto produto) throws Exception;
+
+	public Integer excluirTodos() throws Exception;
+
 }
