@@ -1,0 +1,27 @@
+Complexidade Assintótica de Tempo
+
+Pilha:
+
+push: O(1) — Adicionar um elemento no topo da pilha é realizado em tempo constante.
+pop: O(1) — Remover um elemento do topo da pilha é realizado em tempo constante.
+
+Fila:
+
+enqeue: O(n) — Adicionar um elemento ao final da fila exige percorrer a fila até o final, o que leva tempo linear em relação ao número de elementos.
+dequeue: O(1) — Remover um elemento da frente da fila é realizado em tempo constante.
+rear: O(1) — Acessar o último elemento da fila é realizado em tempo constante.
+front: O(1) — Acessar o primeiro elemento da fila é realizado em tempo constante.
+
+Lista Encadeada:
+
+push: O(n) — Adicionar um elemento ao final da lista exige percorrer a lista até o final, o que leva tempo linear em relação ao número de elementos.
+pop: O(n) — Remover o último elemento da lista exige percorrer a lista até o final, o que leva tempo linear.
+insert: O(n) — Inserir um elemento em uma posição específica da lista exige percorrer a lista até a posição indicada.
+remove: O(n) — Remover um elemento de uma posição específica da lista exige percorrer a lista até a posição indicada.
+elementAt: O(n) — Acessar um elemento em uma posição específica da lista exige percorrer a lista até a posição indicada.
+
+Complexidade de Espaço:
+
+Pilha: O(1) — A pilha utiliza espaço constante para cada operação.
+Fila: O(1) — A fila utiliza espaço constante para cada operação.
+Lista Encadeada: O(1) — Cada operação da lista encadeada consome um espaço constante, já que a memória usada é proporcional ao número de elementos armazenados.
