@@ -9,4 +9,4 @@ Sequência de Fibonacci usando programação recursiva (Classe FibRecursivo)
 Complexidade de tempo: O(2ⁿ) - Para cada número n que queremos calcular, duas chamadas de "encontrarElemento(n)"são executadas, portanto, a complexidade é exponencial na base 2.
 
 Sequência de Fibonacci usando programação dinâmica (Classe FibDinamico)
-Complexidade de tempo: O(n) - os resultados são armazenados em um array, evitando a necessidade de chamar o método outras vezes, portanto, a complexidade de tempo é linear.
+Complexidade de tempo: O(n) - os resultados são armazenados em um array, evitando a necessidade de chamar o método outras vezes, portanto, a complexidade de tempo é linear. E esse é o motivo pelo qual a programação dinâmica é melhor.
